@@ -12,6 +12,10 @@ defmodule MakingPaper.Card do
     add(customer_id, token)
   end
 
+  def set_primary(customer_id, card_id) do
+    Stripe.Customer.update(customer_id, %{default_source: card_id})
+  end
+
   def list(customer_id) do
     Stripe.Card.list(:customer, customer_id)
   end
