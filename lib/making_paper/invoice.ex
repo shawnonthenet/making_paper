@@ -1,6 +1,11 @@
 defmodule MakingPaper.Invoice do
   def list(customer_id) do
-    {:ok, upcoming} = Stripe.Invoice.upcoming(%{customer: customer_id})
+    upcoming = case Stripe.Invoice.upcoming(%{customer: customer_id}) do
+      {:ok, upcoming} ->
+        upcoming
+      _ ->
+        []
+    end
     {:ok, full_list} = Stripe.Invoice.list(%{customer: customer_id})
     {upcoming, full_list}
   end
