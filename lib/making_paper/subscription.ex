@@ -5,7 +5,9 @@ defmodule MakingPaper.Subscription do
     Stripe.Subscription.create(%{customer: customer_id, plan: plan_id})
   end
 
-  def add(customer_id, plan_id coupon_id) do
+  def add(customer_id, plan_id, ""), do: add(customer_id, plan_id)
+  def add(customer_id, plan_id, nil), do: add(customer_id, plan_id)
+  def add(customer_id, plan_id, coupon_id) do
     Stripe.Subscription.create(%{customer: customer_id, plan: plan_id, coupon: coupon_id})
   end
 
