@@ -8,7 +8,7 @@ defmodule MakingPaper.Card do
   end
 
   def replace(customer_id, old_card_id, token) do
-    delete(old_card_id)
+    delete(customer_id, old_card_id)
     add(customer_id, token)
   end
 
