@@ -3,8 +3,8 @@ defmodule MakingPaper.Card do
     Stripe.Card.create(%{customer: customer_id, source: token})
   end
 
-  def delete(card_id) do
-    Stripe.Card.delete(card_id, %{})
+  def delete(customer_id, card_id) do
+    Stripe.Card.delete(card_id, %{customer: customer_id})
   end
 
   def replace(customer_id, old_card_id, token) do
