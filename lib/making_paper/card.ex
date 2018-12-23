@@ -4,7 +4,7 @@ defmodule MakingPaper.Card do
   end
 
   def delete(card_id) do
-    Stripe.Card.delete(card_id)
+    Stripe.Card.delete(card_id, %{})
   end
 
   def replace(customer_id, old_card_id, token) do
